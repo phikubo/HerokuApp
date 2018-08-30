@@ -1,1 +1,1 @@
-web: gunicorn ibm-app.wsgi -b 0.0.0.0:$PORT
+web: gunicorn watson.wsgi -b 0.0.0.0:$PORT
