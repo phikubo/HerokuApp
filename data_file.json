@@ -1,0 +1,1 @@
+{"images": [{"classifiers": [{"classes": [{"score": 0.865, "class": "chevrolet"}], "classifier_id": "DefaultCustomModel_152343211", "name": "Default Custom Model"}], "image": "c62.jpg"}], "images_processed": 1, "custom_classes": 5}

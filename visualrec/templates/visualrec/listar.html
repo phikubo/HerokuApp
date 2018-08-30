@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AwesomeDjango</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script>
+        function myFunction() {
+            console.log("Holi")
+            var file = document.getElementById("file");
+            file.onchange = function () {
+                if (file.files.length > 0) {
+
+                    document.getElementById('filename').innerHTML = file.files[0].name;
+
+                }
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Aplicación Django + Visual Recognition + NLU
+                </h1>
+
+                {% if request.user.is_authenticated %}
+                <li> <a href="{% url 'appvr:logout' %}" > Logout</a></li>
+                {% else %}
+                <li> <a href="{% url 'appvr:login' %}" > Login</a></li>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </section>
+
+    </br> <!--Salto de linea-->
+
+    <div class="tile is-ancestor">
+
+        <!--Tile de la derecha-->
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-success">
+                <div class="content">
+                    <p class="title">Articulos Publicados</p>
+                    <a href="{% url 'appvr:inicio' %}">Inicio</a>
+                    <p class="subtitle">Descripcion de la ventas</p>
+                    <div class="content">
+                        <!-- Content -->
+                        
+                        {% for elemento in articulo %}
+                          <div class="tile is-parent is-vertical">
+                            <article class="tile is-child notification is-primary">
+                              <p class="title is-1">{{ elemento.titulo }}, ${{ elemento.precio }}</p>
+                              <p class="subtitle is-3">Vehículo {{ elemento.marca_carros }}</p>
+                              <p class="subtitle is-4">"{{ elemento.descripcion }}"</p>
+                              
+                              <a href="{% url 'appvr:visualizar' id_producto=elemento.id %}"><img src="{{ elemento.foto.url }}" style="width:500px;height:320px"/></a>
+                              <p class="subtitle is-3">id: {{ elemento.id }}</p>
+                            </article>
+                          </div>
+                        {% endfor %}
+                        <!-- Fin content-->
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>

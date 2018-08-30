@@ -1,0 +1,13 @@
+
+
+
+{% block titulo %}
+Login
+{% endblock titulo %}
+{% block contenido %}
+<form action="" method="POST">
+{% csrf_token %}
+{{ formulario }}
+<input type="submit" name="login">
+</form>
+{% endblock contenido %}

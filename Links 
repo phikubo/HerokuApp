@@ -1,0 +1,41 @@
+watson tutorial de entrenamiento
+https://dataplatform.cloud.ibm.com/docs/content/analyze-data/visual-recognition-train.html?linkInPage=true
+test model
+https://dataplatform.cloud.ibm.com/studio/watson-vision-combined/DefaultCustomModel_152343211/view?project_id=c8027dee-debd-4108-b696-e7bd311cae2b&training_definition_id=c0189196-5863-488c-88e1-5cf313464f17
+
+https://dataplatform.cloud.ibm.com/docs/content/analyze-data/visual-recognition-development.html?audience=wdp&linkInPage=true
+
+
+upload media
+https://www.youtube.com/watch?v=LAIVhl2CG8E
+https://www.youtube.com/watch?v=1UYTZiMtxA4
+
+
+pagina web + forms 
+https://www.youtube.com/watch?v=v7xjdXWZafY
+
+upload files
+https://www.youtube.com/watch?v=v5FWAxi5QqQ
+
+https://docs.djangoproject.com/en/2.0/topics/db/models/
+
+https://docs.djangoproject.com/en/2.0/ref/models/fields/#model-field-types
+
+https://docs.djangoproject.com/en/2.0/ref/models/fields/#django.db.models.TextField
+
+https://docs.djangoproject.com/en/2.0/ref/forms/widgets/#django.forms.TextInput
+
+https://docs.djangoproject.com/en/2.0/ref/forms/fields/
+
+Files:
+https://docs.djangoproject.com/en/2.0/topics/files/
+https://coderwall.com/p/bz0sng/simple-django-image-upload-to-model-imagefield
+
+
+first
+https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/python.html?python#classify
+sec
+https://watson-api-explorer.ng.bluemix.net/apis/visual-recognition-v3?cm_mc_uid=62891150348715331311109&cm_mc_sid_50200000=88080731533135323432&cm_mc_sid_52640000=37431801533135323434
+
+python.
+https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/python.html?python#classify

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AwesomeDjango</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script>
+        function myFunction() {
+            console.log("Holi")
+            var file = document.getElementById("file");
+            file.onchange = function () {
+                if (file.files.length > 0) {
+
+                    document.getElementById('filename').innerHTML = file.files[0].name;
+
+                }
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Aplicación Django + Visual Recognition + NLU
+                </h1>
+
+                {% if request.user.is_authenticated %}
+                <li> <a href="{% url 'appvr:logout' %}" > Logout</a></li>
+                <a href="{% url 'appvr:listar' %}">Solo listar</a>
+                {% else %}
+                <li> <a href="{% url 'appvr:login' %}" > Login</a></li>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </section>
+
+    </br> <!--Salto de linea-->
+
+    <div class="tile is-ancestor">
+
+        
+        {% if request.user.is_authenticated %}
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-info">
+                <div class="content">
+                    <p class="title">Publicar Articulo</p>
+                    <p class="subtitle">Bienvenido, llena el registro.</p>
+                    
+                   
+                    <div class="content">
+                        <!-- Content -->
+
+
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                        <div class="field">
+                            <label class="label">Titulo</label>
+                            <div class="control">
+                            <!--    <input class="input" type="text" placeholder="Titulo"> -->
+                                {{ objeto.titulo }} 
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Precio</label>
+                            <div class="control has-icons-left has-icons-right">
+                              <!--  <input class="input is-success" type="text" placeholder="Precio"> -->
+                                {{ objeto.precio }}
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="field">
+                            <label class="label">Marca</label>
+                            <div class="control">
+                                <div class="select">
+                                    {{ objeto.marca_carros }} <!--
+                                    <select>
+                                        <option>Bmw</option>
+                                        <option>Wolkswaggen</option>
+                                        <option>Chevrolet</option>
+                                        <option>Ford</option>
+                                    </select> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Descripción</label>
+                            <div class="control">
+                              <!--  <textarea class="textarea" placeholder="Descripción"></textarea> -->
+                                {{ objeto.descripcion }}
+                            </div>
+                        </div>
+
+                        {{ objeto.foto }}
+
+                        <div class="field">
+                            <div class="file is-primary">
+                                <label class="file-label">
+                                        
+                                    <!--<input class="file-input" type="file" name="resume" onclick="myFunction()" id="file">
+                                    
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label" id="filename">
+                                            Subir
+                                        </span>
+                                    </span> -->
+                                </label>
+                            </div>
+                        </div>
+                        </br>
+
+                        <div class="field is-grouped ">
+                            <div class="control is">
+                                <button type="submit" class="button is-success">Submit</button>
+                            </div>
+
+                            <div class="control">
+                                <button class="button is-text">Cancel</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+
+
+                        <!--fin content-->
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        {% endif %}
+
+        
+
+
+
+        <!--Tile de la derecha-->
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-success">
+                <div class="content">
+                    <p class="title">Articulos Publicados</p>
+                    <p class="subtitle">Descripcion de la ventas</p>
+                    <div class="content">
+                        <!-- Content -->
+                        
+                        {% for elemento in articulo %}
+                          <div class="tile is-parent is-vertical">
+                            <article class="tile is-child notification is-primary">
+                              <p class="title is-1">{{ elemento.titulo }}, ${{ elemento.precio }}</p>
+                              <p class="subtitle is-3">Vehículo {{ elemento.marca_carros }}</p>
+                              <p class="subtitle is-4">"{{ elemento.descripcion }}"</p>
+                              <img src="{{ elemento.foto.url }}" style="width:500px;height:320px"/>
+                              <a href="{% url 'appvr:visualizar' id_producto=elemento.id %}">Ver item</a>
+                              <p class="subtitle is-3">id: {{ elemento.id }}</p>
+                            </article>
+                          </div>
+                        {% endfor %}
+                        <!-- Fin content-->
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>

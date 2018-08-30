@@ -1,0 +1,12 @@
+
+{% block titulo %}
+Registrar
+{% endblock titulo %}
+
+{% block contenido %}
+<form action="" method="POST">
+{% csrf_token %}
+{{ formulario.as_p }}
+<input type="submit" name="registrar">
+</form>
+{% endblock contenido %}
